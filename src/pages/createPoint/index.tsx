@@ -77,8 +77,6 @@ const CreatePoint = () => {
     }, []);
 
     useEffect(() => {
-        //quando selecionar o uf, vai mostrar os municipios
-        // carregar as cidades sempre que a uf mudar
         if(selectedUf === '0') {
             return;
         }
@@ -91,7 +89,6 @@ const CreatePoint = () => {
 
     }, [selectedUf]);
 
-    // estou alterando o valor de um html selecionando o elemento . variavel global do react
     function handleSelectedUf(event: ChangeEvent<HTMLSelectElement>) {
         const uf = event.target.value;
 
@@ -117,7 +114,7 @@ const CreatePoint = () => {
     function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
         const { name, value } = event.target;
 
-        setFormData({ ...formData, [name]: value }); //informa variavel como  propriedade [name]: sem precisar ficar colocando de maneira manual
+        setFormData({ ...formData, [name]: value });
     }
 
     //pegando o item
@@ -125,7 +122,7 @@ const CreatePoint = () => {
         const alreadySelected = selectedItems.findIndex(item => item === id);
 
         if( alreadySelected >= 0 ){
-            const filteredItems = selectedItems.filter(item => item !== id); //filtrando a lista de items selecionados, pegando o item que queremos remover do selecionado
+            const filteredItems = selectedItems.filter(item => item !== id);
             setSelectedItems(filteredItems);
         } else{
             setSelectedItems([ ...selectedItems, id ]);
@@ -159,7 +156,7 @@ const CreatePoint = () => {
 
         await api.post('points', data);
 
-        alert('ponto de coleta criado'); //depois mudar pra mensagem de cadastro concluido igual ao layout
+        alert('ponto de coleta criado');
 
         history.push('/');
     }
@@ -276,11 +273,6 @@ const CreatePoint = () => {
                         <span>Selecione o endereço no mapa</span>
                     </legend>
                     <ul className="items-grid">
-                        {/* colocando o li pelo número de x que tenho de items na api
-                        esse map ele me permite fazer uma varredura do array e retornar algo.
-                        O primeiro item do array é sempre necessário tem um key, senão dará erro no console, valor único do array.
-                        selectedItems.includes(item.id) ? 'selected' : '' se já incluiu coloca a class selected : é um senão deixa vazio
-                        */}
                         {items.map(item => (
                             <li
                                 key={item.id}
