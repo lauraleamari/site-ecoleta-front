@@ -267,24 +267,7 @@ const CreatePoint = () => {
                     </div>
                 </fieldset>
 
-                <fieldset>
-                    <legend>
-                        <h2>Ítens de coleta</h2>
-                        <span>Selecione o endereço no mapa</span>
-                    </legend>
-                    <ul className="items-grid">
-                        {items.map(item => (
-                            <li
-                                key={item.id}
-                                onClick={() => handleSelectedItem(item.id)}
-                                className={selectedItems.includes(item.id) ? 'selected' : ''}
-                            >
-                                <img src={item.image_url} alt={item.title} />
-                                <span>{item.title}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </fieldset>
+
                 <button type="submit">Cadastrar ponto de coleta</button>
             </form>
         </div>
